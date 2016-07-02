@@ -120,17 +120,23 @@ class HotKeyPlugin: NSObject {
                 if let text = textView.string {
                     let range = textView.selectedRange()
                     var lineRange = text.lineRangeForRange(text.startIndex.advancedBy(max(0, range.location - 1))..<text.startIndex.advancedBy(range.location))
-                    var selectLineNum: Int = 1
+                    var selectLineNum: Int = 0
                     
-//                    print(range)
-//                    print(lineRange)
-
+//                    print("range:\(range.location)..<\(range.location + range.length)")
+                    
+                    if range.location < text.startIndex.distanceTo(lineRange.endIndex) {
+                        selectLineNum = 1
+//                        print(lineRange)
+                    }
+                    
                     while (text.startIndex.distanceTo(lineRange.endIndex) < range.location + range.length) {
                         selectLineNum += 1
                         lineRange = text.lineRangeForRange(lineRange.endIndex..<lineRange.endIndex)
+//                        print(lineRange)
                     }
                     
 //                    print("selectLineNum: \(selectLineNum)")
+                    
                     for _ in 0..<selectLineNum {
                         //删除一行(注意：这里不要直接对textView的string内容做修改，否则无法回退或重做，且光标位置为错误)
                         textView.moveToBeginningOfLine(nil)
