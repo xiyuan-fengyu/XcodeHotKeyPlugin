@@ -122,11 +122,11 @@ class HotKeyPlugin: NSObject {
                     var lineRange = text.lineRangeForRange(text.startIndex.advancedBy(max(0, range.location - 1))..<text.startIndex.advancedBy(range.location))
                     var selectLineNum: Int = 0
                     
-                    print("range:\(range.location)..<\(range.location + range.length)")
+//                    print("range:\(range.location)..<\(range.location + range.length)")
                     
                     if range.location <= text.startIndex.distanceTo(lineRange.endIndex) {
                         selectLineNum = 1
-                        print(lineRange)
+//                        print(lineRange)
                     }
                     
                     while (text.startIndex.distanceTo(lineRange.endIndex) < range.location + range.length) {
