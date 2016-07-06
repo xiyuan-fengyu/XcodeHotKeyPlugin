@@ -135,7 +135,7 @@ class HotKeyPlugin: NSObject {
 //                        print(lineRange)
                     }
                     
-                    print("selectLineNum: \(selectLineNum)")
+//                    print("selectLineNum: \(selectLineNum)")
                     
                     for _ in 0..<selectLineNum {
                         //删除一行(注意：这里不要直接对textView的string内容做修改，否则无法回退或重做，且光标位置为错误)
